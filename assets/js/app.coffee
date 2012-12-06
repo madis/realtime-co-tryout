@@ -9,16 +9,32 @@ class Sender
       id: 'seminar'
       appKey: 'vBwwz0'
       authToken: 'ab6c4a31aff34644b892b435fabb3e6c'
-      url: 'http://localhost:3000/'
+      url: 'http://ortc-developers.realtime.co/server/2.1'
       channels: [{name: 'JohnnyBeGood'}]
     
     xRTML.ready ->
       xRTML.ConnectionManager.create connection
+
+  send: (message) ->
+    messageTemplate = 
+      trigger: 'myTrigger'
+      action: ''
+      data: 
+        title: 'Sample message'
+        text: message
+    
+    rtmlMessage = xRTML.MessageManager.create messageTemplate
+    xRTML.ConnectionManager.sendMessage 
+      connections: ['seminar']
+      channel: 'JohnnyBeGood'
+      content: rtmlMessage
+
+    $('#console').prepend "Sent: #{message}<br/>"
 
 jQuery ->
   sender = new Sender
   $('#message').keyup (event) ->
     if event.keyCode == 13 # Enter was released
       message = $(@).val()
-      $('#console').prepend "Sent: #{message}<br/>"
+      sender.send message
       $(@).val('')
