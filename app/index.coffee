@@ -12,6 +12,8 @@ app.set 'view engine', 'jade'
 # Get root_path return index view
 app.get '/', (req, res) -> 
   res.render 'index'
+app.get '/audience', (req, res) -> 
+  res.render 'audience'
 # Define Port
 port = process.env.PORT or process.env.VMC_APP_PORT or 3000
 # Start Server
