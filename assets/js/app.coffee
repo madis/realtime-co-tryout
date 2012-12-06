@@ -17,3 +17,8 @@ class Sender
 
 jQuery ->
   sender = new Sender
+  $('#message').keyup (event) ->
+    if event.keyCode == 13 # Enter was released
+      message = $(@).val()
+      $('#console').prepend "Sent: #{message}<br/>"
+      $(@).val('')
