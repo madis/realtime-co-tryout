@@ -1,0 +1,30 @@
+{
+    "name": "express-coffee"
+  , "version": "1.5.1"
+  , "private": true
+  , "dependencies": {
+    "express": "3.x" 
+    , "coffee-script": "latest"
+    , "jade": "latest"
+    , "connect-assets": "latest"
+    , "stylus": "latest"
+    , "nib": "latest"
+    , "markdown": "latest"
+    , "which": "*"
+  }, "scripts": {
+    "install": "node node_modules/coffee-script/bin/cake build",
+    "start": "node server.js",
+    "test": "mocha --require should --compilers coffee:coffee-script --colors"
+  }, "devDependencies": {
+    "coffee-script": "*"
+    , "mocha": "*"
+    , "should": "*"
+    , "request": "*"
+    , "supervisor": "*"
+    , "docco": "*"
+  }, 
+  "engines": {
+    "node": "~0.8.x",
+    "npm": "1.1.x"
+  }
+}
