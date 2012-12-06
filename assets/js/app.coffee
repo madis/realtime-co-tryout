@@ -2,7 +2,7 @@
 #= require xrtml-custom-3.0-dev.js
 
 xRTML.Config.debug = true
-class Sender
+window.Sender = class Sender
   constructor: ->
     console.log 'Creating new Sender'
     connection = 
@@ -20,7 +20,7 @@ class Sender
       trigger: 'myTrigger'
       action: ''
       data: 
-        title: 'Sample message'
+        title: 'Great news everybody'
         text: message
     
     rtmlMessage = xRTML.MessageManager.create messageTemplate
