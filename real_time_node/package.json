@@ -1,0 +1,22 @@
+{
+    "name": "IbtRealTimeSJNode"
+  , "version": "2.0.0"
+  , "description": "IbtRealTimeSJNode"
+  , "homepage": "http://ortc.support.ibt.lan"
+  , "keywords": ["ibt", "ortc", "server", "library"]
+  , "author": "ORTC <ortc@ibt.pt>"
+  , "repository":{
+        "type": "svn"
+      , "url": "svn://ibt.ortc/svn/ibt.ortc/trunk/source/Ibt.Ortc.ClientSide/Api/Node/IbtRealTimeSJNode"
+    }
+  , "dependencies": {
+		"ws": "0.4.0"
+		, "request": "2.2.0"
+		, "dateformat": "1.0.2-1.2.3"
+    }
+  , "devDependencies": {
+
+	}
+  , "main": "index"
+  , "engines": { "node": ">= 0.4.11" }
+}
