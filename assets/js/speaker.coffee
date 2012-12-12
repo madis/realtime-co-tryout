@@ -4,3 +4,4 @@ jQuery ->
     if event.keyCode == 13 # Enter was released
       message = $(@).val()
       sender.send message
+      $(@).val('')
