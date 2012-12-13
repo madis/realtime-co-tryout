@@ -1,5 +1,7 @@
 #= require bootstrap.js
 #= require xrtml-custom-3.0-dev.js
+#= require raphael-min.js
+#= require morris.min.js
 
 xRTML.Config.debug = true
 window.Sender = class Sender
@@ -10,7 +12,7 @@ window.Sender = class Sender
       appKey: 'vBwwz0'
       authToken: 'ab6c4a31aff34644b892b435fabb3e6c'
       url: 'http://ortc-developers.realtime.co/server/2.1'
-      channels: [{name: 'JohnnyBeGood'}]
+      channels: [{name: 'chat'}]
     
     xRTML.ready ->
       xRTML.ConnectionManager.create connection
@@ -26,7 +28,7 @@ window.Sender = class Sender
     rtmlMessage = xRTML.MessageManager.create messageTemplate
     xRTML.ConnectionManager.sendMessage 
       connections: ['seminar']
-      channel: 'JohnnyBeGood'
+      channel: 'chat'
       content: rtmlMessage
 
     $('#console').prepend "Sent: #{message}<br/>"
