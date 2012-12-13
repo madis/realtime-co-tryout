@@ -11,28 +11,25 @@ window.Audience = class Audience
         console.log 'audience got', messageEvent.channel
         if messageEvent.channel is 'chat'
           data = (xRTML.JSON.parse messageEvent.message).xrtml.d
-          console.log 'got title, content', data
           $('#title').text data.title
           $('#content').text data.text
         else if messageEvent.channel is 'statistics'
-          console.log 'there is the data for plot', messageEvent
           window.plot.setData JSON.parse(messageEvent.message)
+    
     xRTML.ready =>
       xRTML.ConnectionManager.create @connection  
       console.log 'The audience is listening'
 
 xdata = ->
-  # ({y: letter, x: 0} for letter in [0..'abcdefghijklmnopqrstuvwxyz'.length])
-  # ({y: letter, x: 0} for letter in 'abcdefghijklmnopqrstuvwxyz')
-  ({y: letter, x: 0} for letter in [1..'abcdefghijklmnopqrstuvwxyz'.length])
+  ({x: letter.charCodeAt(0), y: 0} for letter in ';abcdefghijklmnopqrstuvwxyz')
 
 jQuery ->
   window.audience = new Audience
   window.plot = Morris.Bar
     element: 'statistics'
     data: xdata()
-    xkey: 'y'
-    ykeys: ['x']
+    xkey: 'x'
+    ykeys: ['y']
     labels: ['Series y']
 
 
