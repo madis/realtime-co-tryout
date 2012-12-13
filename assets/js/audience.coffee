@@ -30,7 +30,7 @@ jQuery ->
     data: xdata()
     xkey: 'x'
     ykeys: ['y']
-    labels: ['Series y']
+    labels: ['Char code count']
 
 
   
