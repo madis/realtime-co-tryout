@@ -18,3 +18,13 @@ app.get '/audience', (req, res) ->
 port = process.env.PORT or process.env.VMC_APP_PORT or 3000
 # Start Server
 app.listen port, -> console.log "Listening on #{port}\nPress CTRL-C to stop server."
+
+RtsWrapper = require './rts_client'
+
+subscriptions = 
+    'JohnnyBeGood': (message) ->
+      console.log "Handling message", message
+
+rtsWrapper = new RtsWrapper subscriptions
+  
+
