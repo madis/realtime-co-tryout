@@ -10,21 +10,17 @@ app.use express.static(process.cwd() + '/public')
 # Set View Engine
 app.set 'view engine', 'jade'
 # Get root_path return index view
-app.get '/', (req, res) -> 
-  res.render 'index'
-app.get '/audience', (req, res) -> 
-  res.render 'audience'
+
 # Define Port
 port = process.env.PORT or process.env.VMC_APP_PORT or 3000
 # Start Server
 app.listen port, -> console.log "Listening on #{port}\nPress CTRL-C to stop server."
 
-RtsWrapper = require './rts_client'
+ # Set up pages
+require('./app/routes')(app);
 
-subscriptions = 
-    'JohnnyBeGood': (message) ->
-      console.log "Handling message", message
+# Set up messaging
+RtsWrapper = require './app/rts_client'
+subscriptions = require './app/message_handlers'
 
 rtsWrapper = new RtsWrapper subscriptions
-  
-

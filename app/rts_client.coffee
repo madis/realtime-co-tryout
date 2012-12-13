@@ -17,9 +17,9 @@ class RtsWrapper
         do (channel, handler, ortcClient) ->
           ortcClient.subscribe channel, true, (ortc, channel, message) -> 
             try
-              handler JSON.parse(message).xrtml.d
+              handler message: JSON.parse(message).xrtml.d, channel: channel, client: ortc
             catch error
-              handler message
+              handler message, channel: channel, client: ortc
            
     ortcClient.onDisconnected = (ortc) -> console.log 'Disconnected'
      
