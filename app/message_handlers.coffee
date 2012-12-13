@@ -4,8 +4,6 @@ distributions = {}
 for letter in ALPHABET
   distributions[letter.charCodeAt 0] = 0
 
-
-console.log 'distributions', distributions
 parseMessage = (message) ->
   for letter in message
     if(ALPHABET.indexOf(letter) > 0)
