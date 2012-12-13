@@ -45,19 +45,23 @@ For that 2 channels: chat, statistics.
 Running
 -------
 In terminal:
+
 1. Clone the repo ```git clone git@github.com:madis/realtime-co-tryout.git```
 2. Install [nodejs & npm](http://nodejs.org/)
 3. install required packages ```npm install```
 4. Run server ```coffee server```
 
 In browser:
-1. [Speaker](http://localhost:3000/)
-2. [Visitor](http://localhost:3000/audience)
+
+1. Open [Speaker](http://localhost:3000/)
+2. Open [Audience](http://localhost:3000/audience)
 
 Links
 =====
 [API documentation](http://docs.xrtml.org/2-1-0/pubsub/node-js/ortcclient.html)
+
 [Documentation for nodejs](http://docs.xrtml.org/2-1-0/pubsub/node-js/ortcclient.html)
+
 [Morris the plotting library used](http://www.oesmith.co.uk/morris.js/)
 
-[Pricing]()
+[Pricing](http://app.realtime.co/pricing)
