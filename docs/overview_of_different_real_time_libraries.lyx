@@ -1,0 +1,333 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Overview and comparison of some libraries providing real time communication
+\end_layout
+
+\begin_layout Author
+Madis Nõmme
+\end_layout
+
+\begin_layout Abstract
+Real time communication in this writingis used in the context of web application
+s.
+ Traditional approach is the request-response mechanism.
+ Real time means that information provider (server or other users of a site
+ or service) can publish their data and it will be received by subscribers.
+\end_layout
+
+\begin_layout Section
+Libraries
+\end_layout
+
+\begin_layout Standard
+From the following, first two(Socket.io and Faye) are open source projects.
+ Realtime.co and Pusher are commercial services, that let developer use their
+ infrastructure and libraries to communicate with it.
+\end_layout
+
+\begin_layout Subsection
+Socket.io
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+target "http://socket.io/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Socket.io is a library for node.js(V8 javascript VM for server side use) that
+ allows developers to push messages from server to clients.
+ Out of the box it is a publish-subscribe mechanism for server and client.
+ Both the server and the client can be in the roles of publisher and subscriber.
+ There needs to be central server where clients can connect to.
+\end_layout
+
+\begin_layout Standard
+With a bit of custom development, the server can function as a message router
+ or hub.
+ Thus allowing client to client messaging.
+\end_layout
+
+\begin_layout Subsubsection
+Features and benefits
+\end_layout
+
+\begin_layout Enumerate
+Fallbacks to different transport mechanisms when WebSocket is not available
+\end_layout
+
+\begin_layout Enumerate
+Namespaces (i.e.
+ clients can connect to /administrators or /visitors)
+\end_layout
+
+\begin_layout Enumerate
+Concept of rooms.
+ A message can be broadcasted to all clients being in a room.
+\end_layout
+
+\begin_layout Subsection
+Faye
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+target "http://faye.jcoglan.com/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Implementation of the Bayeux protocol
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+target "http://svn.cometd.com/trunk/bayeux/bayeux.html"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ It is also a server-client publish-subscribe type solution.
+ Faye is widely used in web applications written in Ruby.
+ In these cases the web application needs to be run in a event driven web
+ server.
+ Currently Thin, Rainbows and Goliath web servers are supported.
+\end_layout
+
+\begin_layout Subsubsection
+Features and benefits
+\end_layout
+
+\begin_layout Enumerate
+Adapter implementations in Ruby and Node.js
+\end_layout
+
+\begin_layout Enumerate
+Easier to integrate if the web application is already implemented in Ruby(e.g.
+ Rails or Sinatra).
+ With socket.io there is a need to possibly duplicate the model code and
+ other things for the web application and the messaging server.
+\end_layout
+
+\begin_layout Enumerate
+Better nesting of resources where to subscribe (e.g.
+ /messages/private/:user_session_id).
+ Goes well together with the REST concepts.
+\end_layout
+
+\begin_layout Subsection
+Realtime.co
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.realtime.co/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A commercial product that provides publish-subscribe mechanism.
+ The company hosts message server so developers usually only develop message
+ clients.
+ These can be in browser or in server.
+ This takes away some flexibility but at the same time can give more reliability.
+ Messaging in Realtime.co is done in terms of channels.
+ Interested parties will subscribe to channels.
+ They can have different permissions on channels (e.g.
+ listen or write).
+ There is no built in concept of rooms or namespaces.
+\end_layout
+
+\begin_layout Subsubsection
+Features and benefits
+\end_layout
+
+\begin_layout Enumerate
+No need to have server infrastructure for messaging.
+ Server can deal only with serving web application data.
+\end_layout
+
+\begin_layout Enumerate
+Scales well when there are many clients and many messages (millions of messages
+ per second).
+\end_layout
+
+\begin_layout Enumerate
+Client to client(browser to browser) messaging out of the box.
+\end_layout
+
+\begin_layout Enumerate
+Library implementations for multiple platforms and languages (Node, .NET,
+ Ruby, etc.).
+\end_layout
+
+\begin_layout Subsection
+Pusher
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+target "http://pusher.com/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Also a commercial service.
+ Provides similar functionality as the Realtime.co.
+ Internally uses WebSockets and has fallbacks to Flash socket.
+\end_layout
+
+\begin_layout Subsubsection
+Features and benefits
+\end_layout
+
+\begin_layout Standard
+Mostly the same as in Realtime.co.
+ But in addition to these:
+\end_layout
+
+\begin_layout Enumerate
+Rooms and namespaces are also supported.
+\end_layout
+
+\begin_layout Enumerate
+Provides REST API for communication between server webapp to Pusher service.
+ 
+\end_layout
+
+\begin_layout Section
+Conclusion
+\end_layout
+
+\begin_layout Standard
+These four solutions all serve one purpose - to enable pushing state from
+ server to browsers (or other consumers of the service).
+ First two are open source, latter two are commercial solutions.
+ Commercial solutions can have the benefit of scaling better and providing
+ a bit more out-of-the-box functionality.
+\end_layout
+
+\begin_layout Standard
+I personally have implemented solutions in Faye and Socket.io and proponent
+ of in open source development.
+ The open source solutions have more flexibility.
+ They also often adopt faster to new changes in the browser-server wild
+ evolution.
+ Most web applications don't need to be in massive scale.
+ Serving few hundred to thousand simultanious connections with socket.io
+ or Faye is not a problem on current hardware.
+ The bottlenecks are usually in the business logic and database components.
+ So developers need to make components serving these areas to scale rather
+ than the message pushing component.
+\end_layout
+
+\end_body
+\end_document
